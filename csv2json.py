@@ -83,11 +83,13 @@ with open(csvFilePath, encoding='iso-8859-1') as csvFile:
         liberal = {
             'nomMedecin': 'null',
             'emailMedecin': 'null',
-            'telephoenMedecin': 'null',
+            'telephoneMedecin': 'null',
             'RPPS': 'null'
         }
         liberal['nomMedecin'] = data['NomClient']
         liberal['emailMedecin'] = data['ADRMAIL']
+        liberal['telephoneMedecin'] = data['telephoneMedecin']
+        liberal['RPPS'] = data['RPPS']
         # Ajout du bloc "liberal"
         beneficiaires['liberal'].append(liberal)
 
