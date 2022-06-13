@@ -16,7 +16,7 @@ nombre_lignes = 0
 entete_fichier = {
     'impId': 'null',
     'numeroAns': '0123456789',
-    'SIRET': '0123456789ABCD',
+    'SIRET': "38042372300028",
     'lignesImport': []
 }
 
@@ -46,6 +46,7 @@ with open(csvFilePath, encoding='iso-8859-1') as csvFile:
             'libelleTraitement': 'null'
         }
         demande['numLigne'] = nombre_lignes
+        demande['numeroEditeur'] = data['ref bdc']
 
         # Construction du bloc "commande"
         commande = {
@@ -53,9 +54,9 @@ with open(csvFilePath, encoding='iso-8859-1') as csvFile:
             'regimeTVA': 'null',
             'montantSegurHT': 'null',
         }
-        commande['dateCommande'] = ''
-        commande['regimeTVA'] = ''
-        commande['montantSegurHT'] = ''
+        #commande['dateCommande'] = data['date commande']
+        commande['regimeTVA'] = 'TTC'
+        commande['montantSegurHT'] = 358.33
         # Ajout du bloc commande
         demande['commande'] = commande
 
@@ -115,7 +116,7 @@ with open(csvFilePath, encoding='iso-8859-1') as csvFile:
         # Construction du bloc "scenarioInstallation"
         scenario_installation = {
             'isCentreDeSante': 'false',
-            'operateurMessagerie': 'APICEM Apicrypt v2',
+            'operateurMessagerie': 'API_35',
             'isProSanteConnectNeeded': 'true',
             'isDirectToDMP': 'true',
             'isPFIToDMP': "false",
