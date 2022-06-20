@@ -92,7 +92,10 @@ def process_csv_dict(max_entries, json_base_name, csvReader):
             }
             liberal['nomMedecin'] = data['NomClient']
             liberal['emailMedecin'] = data['ADRMAIL']
-            liberal['telephoneMedecin'] = data['telephoneMedecin']
+            # Traitement sur le numéro de téléphone pour enlever les espaces inutiles
+            _num_tel_without_space = ''.join(data['telephoneMedecin'])
+            _num_tel_without_space = _num_tel_without_space.replace(" ","")
+            liberal['telephoneMedecin'] = _num_tel_without_space
             liberal['RPPS'] = data['RPPS']
             # Ajout du bloc "liberal"
             beneficiaires['liberal'].append(liberal)
