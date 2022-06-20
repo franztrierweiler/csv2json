@@ -27,7 +27,7 @@ def process_csv_dict(max_entries, json_base_name, csvReader):
     entete_fichier = {
         'impId': 'null',
         'numeroAns': '0123456789',
-        'SIRET': "38042372300028",
+        'siret': "38042372300028",
         'lignesImport': []
     }
 
@@ -65,7 +65,7 @@ def process_csv_dict(max_entries, json_base_name, csvReader):
                 'regimeTVA': 'null',
                 'montantSegurHT': 'null',
             }
-            #commande['dateCommande'] = data['date commande']
+            commande['dateCommande'] = data['date commande']
             commande['regimeTVA'] = 'TTC'
             commande['montantSegurHT'] = 358.33
             # Ajout du bloc commande
@@ -119,7 +119,7 @@ def process_csv_dict(max_entries, json_base_name, csvReader):
                 'typeFichier': "null"
             }
             pieces_justificatives['nomFichier'] = data['nomFichier']
-            pieces_justificatives['formatFichier'] = 'pdf'
+            pieces_justificatives['formatFichier'] = 'PDF'
             pieces_justificatives['typeFichier'] = 'BON_COMMANDE'
             # Ajout du bloc "piecesJustificatives"
             demande['piecesJustificatives'].append(pieces_justificatives)
@@ -137,7 +137,7 @@ def process_csv_dict(max_entries, json_base_name, csvReader):
                 'isPFIToMSSCitoyen': 'false'
             }
             # Ajout du bloc "scenario_installation"
-            demande['piecesJustificatives'] = pieces_justificatives
+            demande['scenarioInstallation'] = scenario_installation
 
             # Ajout de la demande
             entete_fichier['lignesImport'].append(demande)
